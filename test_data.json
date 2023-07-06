@@ -1,0 +1,58 @@
+{
+    "Kate": {
+        "recipient_mail": "belevich_ev@alivaria.by",
+        "debtor_name": "Катя Белевич",
+        "contract_number": "Номер договора для Кати Белевич",
+        "contract_date": "Дата заключения договор для Кати Белевич",
+        "due_date": "Дата поставки для Кати Белевич",
+        "debt_period": "Срок задолженности для Кати Белевич"
+    },
+    "Tanya": {
+        "recipient_mail": "drobova_ta@alivaria.by",
+        "debtor_name": "Таня Дробова",
+        "contract_number": "Номер договора для Тани Дробовой",
+        "contract_date": "Дата заключения договор для Тани Дробовой",
+        "due_date": "Дата поставки для Тани Дробовой",
+        "debt_period": "Срок задолженности для Тани Дробовой"
+    },
+    "Sasha": {
+        "recipient_mail": "kozyrev_as@alivaria.by",
+        "debtor_name": "Саша Козырев",
+        "contract_number": "Номер договора для Саши Козырева",
+        "contract_date": "Дата заключения договор для Саши Козырева",
+        "due_date": "Дата поставки для Саши Козырева",
+        "debt_period": "Срок задолженности для Саши Козырева"
+    },
+    "Sasha2": {
+        "recipient_mail": "alexandr.kosyrew@mail.ru",
+        "debtor_name": "Саша Козырев",
+        "contract_number": "Номер договора для Саши Козырева",
+        "contract_date": "Дата заключения договор для Саши Козырева",
+        "due_date": "Дата поставки для Саши Козырева",
+        "debt_period": "Срок задолженности для Саши Козырева"
+    },
+    "Sasha3": {
+        "recipient_mail": "alexandr.kosyrew1@gmail.com",
+        "debtor_name": "Саша Козырев",
+        "contract_number": "Номер договора для Саши Козырева",
+        "contract_date": "Дата заключения договор для Саши Козырева",
+        "due_date": "Дата поставки для Саши Козырева",
+        "debt_period": "Срок задолженности для Саши Козырева"
+    },
+    "Veronika": {
+        "recipient_mail": "karneenko_va@alivaria.by",
+        "debtor_name": "Вероника Карнеенко",
+        "contract_number": "Номер договора для Вероники Карнеенко",
+        "contract_date": "Дата заключения договор для Вероники Карнеенко",
+        "due_date": "Дата поставки для Вероники Карнеенко",
+        "debt_period": "Срок задолженности для Вероники Карнеенко"
+    },
+    "Lidia": {
+        "recipient_mail": "bogdanovich_lp@alivaria.by",
+        "debtor_name": "Лидия Богданович",
+        "contract_number": "Номер договора для Лидии Богданович",
+        "contract_date": "Дата заключения договор для Лидии Богданович",
+        "due_date": "Дата поставки для Лидии Богданович",
+        "debt_period": "Срок задолженности для Лидии Богданович"
+    }
+}
