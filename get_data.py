@@ -20,9 +20,7 @@ def get_data():
                                             contract_number=debtor_data["contract_number"],
                                             contract_date=debtor_data["contract_date"],
                                             due_date=debtor_data["due_date"],
-                                            debt_period=debtor_data["debt_period"]).encode('utf-8')
-            
-            # print(text_message)
+                                            debt_period=debtor_data["debt_period"])
             
             mail_sending(message=text_message, recipient_mail=recipient_mail)
 
