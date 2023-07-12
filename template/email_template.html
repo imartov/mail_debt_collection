@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="color-scheme" content="light only"> -->
+    <meta name="color-scheme" content="light dark">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        .logo-container {
+       .logo-container {
             max-width: 620px;
             margin: 0 auto;
             border-top: 1px solid #e0e0e0;
@@ -114,6 +117,7 @@
             padding: 0px;
             border: 0px;
             border-color: black;
+            text-decoration: none;
         }
 
         .icon-table-cell {
@@ -145,7 +149,6 @@
         .contacts-text-company-name {
             display: table-cell;
         }
-
     </style>
 </head>
 
@@ -153,13 +156,13 @@
 
     <div class="logo-container">
         <!-- <a href="https://alivaria.by/ru/" class="logo vertical vertical--middle"><img src="cid:{asparagus_cid}" alt="Аливария" title="Аливария" aria-label="Аливария"></a> -->
-        <a href="https://alivaria.by/ru/" class="logo vertical vertical--middle"><img src="images\corporate-logo.png" alt="Аливария" title="Аливария" aria-label="Аливария"></a>
+        <a href="https://alivaria.by/ru/" class="logo vertical vertical--middle"><img src="{{ corp_logo.src }}" alt="Аливария" title="Аливария" aria-label="Аливария"></a>
     </div>
 
       
     <div class="container">
         <div class="row">
-        
+
             <div class="header">
             <h1>Debt Collection Email</h1>
             </div>
@@ -181,7 +184,7 @@
                 <div class="icon-table-cell">
                     <div class="icon-round">
                         <a href="https://www.instagram.com/alivaria_career/" target="_blank" class="icon-link">
-                            <img src="images\instagram-icon.png" alt="Instagram" class="social-icon" width="50" height="50">
+                            <img src="{{ inst_icon.src }}" alt="Instagram" class="social-icon" width="50" height="50">
                             <!-- <img src="cid:{instagram_icon}" alt="Instagram" class="social-icon" width="50" height="50"> -->
                         </a>
                     </div>
@@ -190,8 +193,8 @@
                 <div class="icon-table-cell">
                     <div class="icon-round">
                         <a href="https://www.linkedin.com/company/alivaria-brewery/" target="_blank" class="icon-link">
-                            <img src="images\linkedin-icon.png" alt="LinkedIn" class="social-icon" width="50" height="50">
-                            <!-- <img src="cid:{linkedin_icon}" alt="LinkedIn" class="social-icon" width="50" height="50"> -->
+                            <img src="{{ link_icon.src }}" alt="LinkedIn" class="social-icon" width="50" height="50">
+                            <!-- <img src="cid:{linkedin_cid}" alt="LinkedIn" class="social-icon" width="50" height="50"> -->
                         </a>
                     </div>
                 </div>
@@ -199,7 +202,7 @@
                 <div class="icon-table-cell">
                     <div class="icon-round">
                         <a href="https://alivaria.by/ru/" target="_blank" class="icon-link">
-                            <img src="images\site-icon.png" alt="Instagram" class="social-icon" width="50" height="50">
+                            <img src="{{ site_icon.src }}" alt="Instagram" class="social-icon" width="50" height="50">
                             <!-- <img src="cid:{site_icon}" alt="Instagram" class="social-icon" width="50" height="50"> -->
                         </a>
                     </div>
@@ -207,10 +210,9 @@
 
             </div>
             <div class="company-description">
-                <div class="table-company-name">
-                    <p class="contacts-text-company-name" style="padding-right: 4px;">ОАО "Пивоваренная компания Аливария" </p> 
-                    <p class="contacts-text-company-name">© 2023</p>
-                </div>
+                <!-- <div class="table-company-name"> -->
+                    <p class="contacts-text" style="padding-right: 4px;">ОАО "Пивоваренная компания Аливария" &copy; 2023</p> 
+                <!-- </div> -->
                 <p class="contacts-text">УНП - 100128525</p>
                 <p class="contacts-text">220002, г. Минск, ул. Киселева, 30</p>
             </div>
