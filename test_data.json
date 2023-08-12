@@ -7,16 +7,9 @@
     },
 
     "Tanya": {
-        "recipient_mail": "alexandr.kosyrew@mail.ru",
-        "debtor_name": "Таня Дробова",
+        "recipient_mail": "igor.horuzhiy@gmail.com",
+        "debtor_name": "Игорь Хоружий",
         "debt_amount": 6784564,
         "due_date": "02.02.2023"
-    },
-
-    "Sasha": {
-        "recipient_mail": "alexandr.kosyrew@mail.ru",
-        "debtor_name": "Саша Козырев",
-        "debt_amount": 87623445,
-        "due_date": "03.03.2021"
     }
 }
