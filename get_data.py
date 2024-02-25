@@ -1,25 +1,63 @@
-import json
-from main import send_email
+'''
+This module contains methods for retrieving data from sources (export data methods)
+'''
+
+import os
+import logging
+from dotenv import load_dotenv
+from openpyxl import load_workbook
 
 
-def get_data() -> None:
-    ''' connection to database '''
-    
-    # open file with debtors and save data in data variable
-    with open('test_data.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    
-    # run send_email function and pass ti it params
-    for name, debtor_data in data.items():
-        send_email(recipient_mail=debtor_data["recipient_mail"],
-                   debtor_name=debtor_data["debtor_name"],
-                   debt_amount=debtor_data["debt_amount"],
-                   due_date=debtor_data["due_date"])
+logging.basicConfig(level=logging.DEBUG, filename="py_log.log",filemode="w",
+                    format="%(asctime)s %(levelname)s %(message)s")
+load_dotenv()
+
+def get_data() -> dict:
+    ''' this method retrieves data from the source file '''
+    wb = load_workbook(filename=os.getenv("SOURCE_FILE"))
+    ws = wb.active
+    for row in ws.iter_rows(min_row=3):
+        unp = row[11].value
+        company_name = row[1].value
+        debt_sum = row[4].value
+        payment_date = row[12].value
+        email = row[13].value
+
+        cfilter = Filter(unp=unp, company_name=company_name, debt_sum=debt_sum,
+                        payment_date=payment_date, email=email)
+        if cfilter.run():
+            logging.info("%s %s %s %s %s", unp, company_name, debt_sum, payment_date, email)
+
+
+class Filter:
+    ''' this class contains methods for checking values and filtering input data '''
+    def __init__(self, **kwargs) -> None:
+        self.kwargs = kwargs
+
+    def check_exist_email(self):
+        ''' this method checks for the presence of the client's email address '''
+        email = self.kwargs.get('email')
+        if email:
+            return True
+        return None
+
+    def check_exist_debt_sum(self):
+        ''' this method checks for overdue customer receivables'''
+        debt_sum = self.kwargs.get('debt_sum')
+        if debt_sum:
+            return True
+        return None
+
+    def run(self) -> None:
+        ''' this method determines the order in which class methods are called '''
+        if self.check_exist_email() and self.check_exist_debt_sum():
+            return True
+        return None
 
 
 def main():
+    ''' this method controls calls to other module methods '''
     get_data()
-
 
 if __name__ == "__main__":
     main()

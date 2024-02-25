@@ -1,4 +1,5 @@
 from redmail import gmail
+from redmail import outlook
 from dotenv import load_dotenv
 import os
 
@@ -11,15 +12,15 @@ def send_email(recipient_mail:str, debtor_name:str, debt_amount:int, due_date:st
     EMAIL_SENDER_PASSWORD = os.getenv("MAIL_SENDER_PASSWORD")
 
     # autentification to gmail
-    gmail.username = SENDER_EMAIL
-    gmail.password = EMAIL_SENDER_PASSWORD
+    outlook.username = 'byclaimservice@alivaria.by'
+    outlook.password = '@sE3c5U@'
 
     # get html content
     with open("template\\email_template.html", "r", encoding="utf-8") as file:
         html_content = file.read()
 
     # send email
-    gmail.send(
+    outlook.send(
         subject="Example email",
         receivers=[recipient_mail],
         html=html_content,
@@ -41,17 +42,20 @@ def send_email(recipient_mail:str, debtor_name:str, debt_amount:int, due_date:st
     )
 
 
-if __name__ == "__main__":
-    ''' test tun of function '''
-
+def main() -> None:
     # get envoirement variables 
     load_dotenv()
     RECIPIENT_EMAIL = os.getenv("RECIPIENT_MAIL")
 
     # run function
-    send_email(recipient_mail=RECIPIENT_EMAIL,
-               debtor_name="ОАО 'Рога и копыта'",
+    send_email(recipient_mail='alexandr.kosyrew1@gmail.com',
+               debtor_name="Козырев Александр",
                debt_amount=12345,
                due_date="12.12.2021")
+
+if __name__ == "__main__":
+    main()
+
+    
 
 
