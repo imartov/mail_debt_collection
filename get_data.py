@@ -12,10 +12,11 @@ logging.basicConfig(level=logging.DEBUG, filename="py_log.log",filemode="w",
                     format="%(asctime)s %(levelname)s %(message)s")
 load_dotenv()
 
-def get_data() -> dict:
+def get_data() -> list:
     ''' this method retrieves data from the source file '''
     wb = load_workbook(filename=os.getenv("SOURCE_FILE"))
     ws = wb.active
+    recipients = []
     for row in ws.iter_rows(min_row=3):
         unp = row[11].value
         company_name = row[1].value
@@ -25,9 +26,20 @@ def get_data() -> dict:
 
         cfilter = Filter(unp=unp, company_name=company_name, debt_sum=debt_sum,
                         payment_date=payment_date, email=email)
-        if cfilter.run():
-            logging.info("%s %s %s %s %s", unp, company_name, debt_sum, payment_date, email)
-
+        if not cfilter.run():
+            continue
+        
+        logging.info("%s | %s | %s | %s | %s", unp, company_name, debt_sum, payment_date, email)
+        recipients.append(
+            {
+                "unp": unp,
+                "company_name": company_name,
+                "debt_sum": debt_sum,
+                "payment_date": payment_date,
+                "email": email
+            }
+        )
+    return recipients
 
 class Filter:
     ''' this class contains methods for checking values and filtering input data '''
