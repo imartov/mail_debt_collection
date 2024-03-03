@@ -19,29 +19,30 @@ def get_data() -> list:
     recipients = []
     for row in ws.iter_rows(min_row=3):
         unp = row[11].value
-        company_name = row[1].value
-        debt_sum = row[4].value
+        monolit_code = row[0].value
+        client_name = row[1].value
+        debt_amount = row[4].value
         payment_date = row[12].value
         email = row[13].value
 
-        cfilter = Filter(unp=unp, company_name=company_name, debt_sum=debt_sum,
-                        payment_date=payment_date, email=email)
-        if not cfilter.run():
+        sfilter = ServiceFilter(unp=unp, client_name=client_name, debt_sum=debt_amount,
+                                payment_date=payment_date, email=email)
+        if not sfilter.run():
             continue
-        
-        logging.info("%s | %s | %s | %s | %s", unp, company_name, debt_sum, payment_date, email)
+
         recipients.append(
             {
                 "unp": unp,
-                "company_name": company_name,
-                "debt_sum": debt_sum,
+                "monolit_code": monolit_code,
+                "client_name": client_name,
+                "debt_amount": debt_amount,
                 "payment_date": payment_date,
                 "email": email
             }
         )
     return recipients
 
-class Filter:
+class ServiceFilter:
     ''' this class contains methods for checking values and filtering input data '''
     def __init__(self, **kwargs) -> None:
         self.kwargs = kwargs
@@ -53,7 +54,7 @@ class Filter:
             return True
         return None
 
-    def check_exist_debt_sum(self):
+    def check_exist_debt_amount(self):
         ''' this method checks for overdue customer receivables'''
         debt_sum = self.kwargs.get('debt_sum')
         if debt_sum:
@@ -62,7 +63,7 @@ class Filter:
 
     def run(self) -> None:
         ''' this method determines the order in which class methods are called '''
-        if self.check_exist_email() and self.check_exist_debt_sum():
+        if self.check_exist_email() and self.check_exist_debt_amount():
             return True
         return None
 
