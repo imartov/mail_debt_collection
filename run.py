@@ -14,11 +14,8 @@ def run() -> None:
     transformdrecipients = TransformData(input_data=recipients).clients()
     uniqueclientdata = GetUniqueClientData(key_name="unp", client_data=transformdrecipients).run()
     logging.info(uniqueclientdata)
-    insert_data(table_name=clients, insert_data=uniqueclientdata)
-    # for item in uniqueclientdata:
-        # item_list = []
-        # item = item_list.append(item)
-        # insert_data(table_name=clients, insert_data=item)
+    if uniqueclientdata:
+        insert_data(table_name=clients, insert_data=uniqueclientdata)
 
 def main() -> None:
     run()

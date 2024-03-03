@@ -3,27 +3,15 @@ Connects to a SQL database using pyodbc
 '''
 
 import os
-import pyodbc
 from dotenv import load_dotenv
 import logging
 from datetime import datetime
-import pyodbc
 import sqlalchemy as db
-from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
-from sqlalchemy import insert
-from sqlalchemy import URL
-from sqlalchemy.sql import func
-from sqlalchemy.orm import Session
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
 from sqlalchemy import ForeignKey
 from sqlalchemy import select
 from sqlalchemy import Table
 from sqlalchemy import MetaData
 from sqlalchemy import Column
-from sqlalchemy.dialects.postgresql import insert
 
 load_dotenv()
 logging.basicConfig(level=logging.DEBUG, filename="py_log.log",filemode="w",
